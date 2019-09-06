@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cryptocurrentc-tracker-ng": {
+    "cryptocurrency-tracker-ng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cryptocurrentc-tracker-ng",
+            "outputPath": "dist/cryptocurrency-tracker-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cryptocurrentc-tracker-ng:build"
+            "browserTarget": "cryptocurrency-tracker-ng:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cryptocurrentc-tracker-ng:build:production"
+              "browserTarget": "cryptocurrency-tracker-ng:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cryptocurrentc-tracker-ng:build"
+            "browserTarget": "cryptocurrency-tracker-ng:build"
           }
         },
         "test": {
@@ -115,15 +115,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cryptocurrentc-tracker-ng:serve"
+            "devServerTarget": "cryptocurrency-tracker-ng:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cryptocurrentc-tracker-ng:serve:production"
+              "devServerTarget": "cryptocurrency-tracker-ng:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "cryptocurrentc-tracker-ng"
+  "defaultProject": "cryptocurrency-tracker-ng"
 }
