@@ -1,0 +1,27 @@
+<mat-table [dataSource]="currencies" class="mat-elevation-z8">
+	<ng-container matColumnDef="rank">
+		<mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.rank}} </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="symbol">
+		<mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="price">
+		<mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element[priceKey] | currency:fiatCurrency:'symbol':'1.2-4'}} </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="change24h">
+		<mat-header-cell *matHeaderCellDef> 24 hour change </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.percent_change_24h | number}}% </mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row class="currencies-list__row"
+					 *matRowDef="let row; columns: displayedColumns;"
+					 (click)="goToCurrency(row.symbol)">
+	</mat-row>
+</mat-table>

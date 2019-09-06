@@ -1,0 +1,48 @@
+
+
+<div class="currency-details">
+	<mat-card>
+		<div><strong>Rank:</strong> {{currency.rank}}</div>
+		<div><strong>Name:</strong> {{currency.name}}</div>
+		<div><strong>Symbol:</strong> {{currency.symbol}}</div>
+		<div>
+			<strong>Price ({{fiatCurrency}}:</strong>
+			{{currency['price_' + fiatCurrencySlug] | currency:fiatCurrency:'symbol':'1.2-4'}}
+		</div>
+		<div>
+			<strong>24h volume:</strong>
+			{{currency['24h_volume_' + fiatCurrencySlug] | currency:fiatCurrency:'symbol':'1.2-4'}}
+		</div>
+		<div>
+			<strong>Market cap:</strong>
+			{{currency['market_cap_' + fiatCurrencySlug] | currency:fiatCurrency:'symbol':'1.2-4'}}
+		</div>
+		<div>
+			<strong>Price (BTC):</strong>
+			{{currency.price_btc | currency:'BTC':'symbol':'1.2-4'}}
+		</div>
+		<div>
+			<strong>1h percent change:</strong>
+			{{currency.percent_change_1h | number}}%
+		</div>
+		<div>
+			<strong>24h percent change:</strong>
+			{{currency.percent_change_24h | number}}%
+		</div>
+		<div>
+			<strong>7d percent change:</strong>
+			{{currency.percent_change_7d | number}}%
+		</div>
+		<div>
+			<strong>Total supply:</strong>
+			{{currency.total_supply | number}}
+		</div>
+		<div>
+			<strong>Available supply:</strong>
+			{{currency.available_supply | number}}
+		</div>
+	</mat-card>
+	<div class="currency-details__buttons">
+		<a mat-raised-button [routerLink]="['/']">Back to list</a>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<div>
+	<mat-progress-spinner mode="indeterminate" *ngIf="isLoading$ | async"></mat-progress-spinner>
+	<div class="container">
+		<app-currencies-list [currencies]="currencies$ | async"
+												 [fiatCurrency]="fiatCurrency$ | async">
+		</app-currencies-list>
+	</div>
+</div>

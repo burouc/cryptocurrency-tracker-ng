@@ -1,3 +1,7 @@
-<header>
-	<mat-toolbar color="primary"></mat-toolbar>
+<header class="header">
+	<mat-toolbar color="primary" class="header__toolbar">
+		<a mat-icon-button [routerLink]="['/settings']" title="settings">
+			<mat-icon>settings</mat-icon>
+		</a>
+	</mat-toolbar>
 </header>
