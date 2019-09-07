@@ -5,7 +5,7 @@ import { Currency, FiatCurrency } from '../models';
 import { CoinMarketCapApiService } from '../services';
 import { LoadCurrencies, SelectCurrency, ClearCurrencies, SetFiatCurrency } from './currencies.actions';
 
-interface CurrenciesState {
+export interface CurrenciesState {
   currencies: Currency[];
   fiatCurrency: FiatCurrency;
   isLoading: boolean;
