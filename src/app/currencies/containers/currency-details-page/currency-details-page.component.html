@@ -1,6 +1,11 @@
 <div class="position-relative">
 	<app-loading-overlay *ngIf="isLoading$ | async"></app-loading-overlay>
 	<div class="container">
+		<app-error-message
+			*ngIf="error$ | async"
+			[error]="error$ | async"
+			(clearError)="hideError()">
+		</app-error-message>
 		<app-currency-details *ngIf="selectedCurrency$ | async"
 													[currency]="selectedCurrency$ | async"
 													[fiatCurrency]="fiatCurrency$ | async">

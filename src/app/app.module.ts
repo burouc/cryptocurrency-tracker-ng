@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     LayoutModule,
     CurrenciesModule,
-    NgxsModule.forRoot([CurrenciesStore])
+    NgxsModule.forRoot([CurrenciesStore]),
   ],
   providers: [],
   bootstrap: [AppComponent]

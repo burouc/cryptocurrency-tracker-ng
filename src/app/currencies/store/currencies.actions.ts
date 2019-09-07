@@ -14,6 +14,11 @@ export class SetFiatCurrency {
   constructor(public selectedFiatCurrency: FiatCurrency) {}
 }
 
+export class SetError {
+  static type = '[Currencies] Set Error';
+  constructor(public error: string) {}
+}
+
 export class ClearCurrencies {
   static type = '[Currencies] Clear Currencies';
 }

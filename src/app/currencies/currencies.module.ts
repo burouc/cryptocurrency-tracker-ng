@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   MatButtonModule,
   MatCardModule,
-  MatFormFieldModule,
+  MatFormFieldModule, MatIconModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatTableModule
@@ -19,6 +19,7 @@ import { SettingsPageComponent } from './containers/settings-page/settings-page.
 import { FiatCurrencySelectComponent } from './components/fiat-currency-select/fiat-currency-select.component';
 import { FormsModule } from '@angular/forms';
 import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 
 const routes: Routes = [
@@ -44,12 +45,14 @@ const routes: Routes = [
     CurrencyDetailsComponent,
     SettingsPageComponent,
     FiatCurrencySelectComponent,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    ErrorMessageComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    MatIconModule,
     MatTableModule,
     MatButtonModule,
     MatCardModule,

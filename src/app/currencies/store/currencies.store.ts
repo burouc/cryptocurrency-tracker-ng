@@ -1,15 +1,16 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { Currency, FiatCurrency } from '../models';
 import { CoinMarketCapApiService } from '../services';
-import { LoadCurrencies, SelectCurrency, ClearCurrencies, SetFiatCurrency } from './currencies.actions';
+import { LoadCurrencies, SelectCurrency, ClearCurrencies, SetFiatCurrency, SetError } from './currencies.actions';
 
 export interface CurrenciesState {
   currencies: Currency[];
   fiatCurrency: FiatCurrency;
   isLoading: boolean;
   loaded: boolean;
+  error: string;
   selectedCurrencySymbol: string;
 }
 
@@ -20,6 +21,7 @@ export interface CurrenciesState {
     fiatCurrency: FiatCurrency.EUR,
     isLoading: false,
     loaded: false,
+    error: null,
     selectedCurrencySymbol: null
   }
 })
@@ -42,10 +44,13 @@ export class CurrenciesStore {
   }
 
   @Selector()
+  static error(state: CurrenciesState): string {
+    return state.error;
+  }
+
+  @Selector()
   static currencyDetails(state: CurrenciesState): Currency | null {
     const { isLoading, selectedCurrencySymbol, currencies } = state;
-
-    console.log(state);
 
     if (isLoading) {
       return null;
@@ -78,13 +83,18 @@ export class CurrenciesStore {
       .pipe(
         tap(currencies => {
           patchState({ currencies, isLoading: false, loaded: true });
+        }),
+        catchError((error) => {
+          patchState({ isLoading: false, error: `Couldn't load currencies.` });
+
+          return error;
         })
     );
   }
 
   @Action(SelectCurrency)
   selectCurrency({ patchState, getState, dispatch }: StateContext<CurrenciesState>, { currency }: SelectCurrency) {
-    const { loaded, fiatCurrency } = getState();
+    const { loaded } = getState();
 
     if (!loaded) {
       dispatch(LoadCurrencies);
@@ -106,5 +116,10 @@ export class CurrenciesStore {
   @Action(ClearCurrencies)
   clearCurrencies({ patchState }: StateContext<CurrenciesState>) {
     patchState({ currencies: [], loaded: false });
+  }
+
+  @Action(SetError)
+  setError({ patchState }: StateContext<CurrenciesState>, { error }: SetError) {
+    patchState({ error });
   }
 }

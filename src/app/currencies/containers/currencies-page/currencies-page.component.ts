@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { LoadCurrencies } from '../../store/currencies.actions';
+import { LoadCurrencies, SetError } from '../../store/currencies.actions';
 import { CurrenciesStore } from '../../store/currencies.store';
 import { Currency, FiatCurrency } from '../../models';
 
@@ -23,7 +23,14 @@ export class CurrenciesPageComponent implements OnInit {
   @Select(CurrenciesStore.fiatCurrency)
   public fiatCurrency$: Observable<FiatCurrency>;
 
+  @Select(CurrenciesStore.error)
+  public error$: Observable<Error>;
+
   ngOnInit() {
-    this.store.dispatch([LoadCurrencies]);
+    this.store.dispatch(LoadCurrencies);
+  }
+
+  hideError() {
+    this.store.dispatch(new SetError(null));
   }
 }

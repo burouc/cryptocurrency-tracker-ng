@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Currency, FiatCurrency } from '../../models';
 import { CurrenciesStore } from '../../store/currencies.store';
-import { SelectCurrency } from '../../store/currencies.actions';
+import { SelectCurrency, SetError } from '../../store/currencies.actions';
 
 @Component({
   selector: 'app-currency-details-page',
@@ -23,8 +23,14 @@ export class CurrencyDetailsPageComponent implements OnInit {
   @Select(CurrenciesStore.fiatCurrency)
   public fiatCurrency$: Observable<FiatCurrency>;
 
+  @Select(CurrenciesStore.error)
+  public error$: Observable<Error>;
+
   ngOnInit() {
     this.store.dispatch([new SelectCurrency('BTC')]);
   }
 
+  hideError() {
+    this.store.dispatch(new SetError(null));
+  }
 }

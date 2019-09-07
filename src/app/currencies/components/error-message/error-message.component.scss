@@ -1,0 +1,10 @@
+.error-message {
+  margin-bottom: 1rem;
+  color: #721c24;
+  background-color: #f8d7da;
+
+  &__button {
+    float: right;
+    margin-top: -10px;
+  }
+}
