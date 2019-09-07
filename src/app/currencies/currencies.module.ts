@@ -2,13 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MatButtonModule, MatCardModule, MatProgressSpinnerModule, MatTableModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatTableModule
+} from '@angular/material';
 
 import { CurrenciesPageComponent } from './containers/currencies-page/currencies-page.component';
 import { CurrencyDetailsPageComponent } from './containers/currency-details-page/currency-details-page.component';
 import { CurrenciesListComponent } from './components/currencies-list/currencies-list.component';
 import { CurrencyDetailsComponent } from './components/currency-details/currency-details.component';
 import { SettingsPageComponent } from './containers/settings-page/settings-page.component';
+import { FiatCurrencySelectComponent } from './components/fiat-currency-select/fiat-currency-select.component';
+import { FormsModule } from '@angular/forms';
+import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
 
 
 const routes: Routes = [
@@ -32,15 +42,20 @@ const routes: Routes = [
     CurrencyDetailsPageComponent,
     CurrenciesListComponent,
     CurrencyDetailsComponent,
-    SettingsPageComponent
+    SettingsPageComponent,
+    FiatCurrencySelectComponent,
+    LoadingOverlayComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FormsModule,
     MatTableModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatSelectModule
   ]
 })
 export class CurrenciesModule { }

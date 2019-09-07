@@ -1,1 +1,18 @@
-<p>settings-page works!</p>
+<div class="settings-page">
+	<mat-card>
+		<app-fiat-currency-select [(ngModel)]="selectedFiatCurrency"></app-fiat-currency-select>
+	</mat-card>
+	<div class="settings-page__buttons">
+		<button mat-raised-button
+						class="settings-page__cancel-button"
+						(click)="cancel()">
+			Cancel
+		</button>
+		<button mat-raised-button
+						color="primary"
+						class="settings-page__confirm-button"
+						(click)="confirm()">
+			Confirm
+		</button>
+	</div>
+</div>

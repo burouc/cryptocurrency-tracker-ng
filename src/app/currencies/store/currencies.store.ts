@@ -3,7 +3,7 @@ import { tap } from 'rxjs/operators';
 
 import { Currency, FiatCurrency } from '../models';
 import { CoinMarketCapApiService } from '../services';
-import { LoadCurrencies, SelectCurrency, ClearCurrencies } from './currencies.actions';
+import { LoadCurrencies, SelectCurrency, ClearCurrencies, SetFiatCurrency } from './currencies.actions';
 
 interface CurrenciesState {
   currencies: Currency[];
@@ -92,6 +92,16 @@ export class CurrenciesStore {
 
     patchState({ selectedCurrencySymbol: currency });
   }
+
+  @Action(SetFiatCurrency)
+  setFiatCurrency({ patchState, getState, dispatch }: StateContext<CurrenciesState>, { selectedFiatCurrency }: SetFiatCurrency) {
+    const { fiatCurrency } = getState();
+
+    if (selectedFiatCurrency !== fiatCurrency) {
+      patchState({ fiatCurrency: selectedFiatCurrency, loaded: false });
+    }
+  }
+
 
   @Action(ClearCurrencies)
   clearCurrencies({ patchState }: StateContext<CurrenciesState>) {

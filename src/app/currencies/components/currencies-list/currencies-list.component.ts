@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Currency } from '../../models';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-currencies-list',

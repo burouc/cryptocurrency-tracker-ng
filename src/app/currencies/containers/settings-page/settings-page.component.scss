@@ -1,0 +1,16 @@
+.settings-page {
+  margin: 0 auto;
+  max-width: 600px;
+
+  &__buttons {
+    margin-top: 2rem;
+  }
+
+  &__cancel-button {
+    float: left;
+  }
+
+  &__confirm-button {
+    float: right;
+  }
+}
