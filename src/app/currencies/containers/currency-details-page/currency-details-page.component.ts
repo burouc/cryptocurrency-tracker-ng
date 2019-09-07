@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Currency, FiatCurrency } from '../../models';
 import { CurrenciesStore } from '../../store/currencies.store';
-import { SelectCurrency, SetError } from '../../store/currencies.actions';
+import { ClearCurrencies, LoadCurrencies, SelectCurrency, SetError } from '../../store/currencies.actions';
 
 @Component({
   selector: 'app-currency-details-page',
@@ -32,5 +32,9 @@ export class CurrencyDetailsPageComponent implements OnInit {
 
   hideError() {
     this.store.dispatch(new SetError(null));
+  }
+
+  refresh() {
+    this.store.dispatch([ClearCurrencies, LoadCurrencies]);
   }
 }

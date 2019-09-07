@@ -6,6 +6,11 @@
 			[error]="error$ | async"
 			(clearError)="hideError()">
 		</app-error-message>
+		<div class="mb-1">
+			<button mat-button (click)="refresh()"
+							mat-raised-button
+							color="primary">Refresh</button>
+		</div>
 		<app-currencies-list [currencies]="currencies$ | async"
 												 [fiatCurrency]="fiatCurrency$ | async">
 		</app-currencies-list>

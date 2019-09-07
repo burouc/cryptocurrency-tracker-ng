@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { LoadCurrencies, SetError } from '../../store/currencies.actions';
+import { LoadCurrencies, SetError, ClearCurrencies } from '../../store/currencies.actions';
 import { CurrenciesStore } from '../../store/currencies.store';
 import { Currency, FiatCurrency } from '../../models';
 
@@ -32,5 +32,9 @@ export class CurrenciesPageComponent implements OnInit {
 
   hideError() {
     this.store.dispatch(new SetError(null));
+  }
+
+  refresh() {
+    this.store.dispatch([ClearCurrencies, LoadCurrencies]);
   }
 }
